@@ -1,13 +1,52 @@
 /* This is the data we will be using, study it but don't change anything, yet. */
 
-let menuItems = [
-  'Students',
-  'Faculty',
-  "What's New",
-  'Tech Trends',
-  'Music',
-  'Log Out'
-];
+let menuItems = [ 'Students', 'Faculty', "What's New", 'Tech Trends', 'Music', 'Log Out' ];
+//grabbing container
+const body = document.querySelector('body');
+
+//parameters and functions
+function createMenu(menuItems) {
+	//define new elements
+	const menu = document.createElement('div');
+	const cardList = document.createElement('ul');
+	const Students = document.createElement('li');
+	const Faculty = document.createElement('li');
+	const WhatsNew = document.createElement('li');
+	const TechTrends = document.createElement('li');
+	const Music = document.createElement('li');
+	const LogOut = document.createElement('li');
+
+	menu.classList.add('menu');
+
+	//class list
+	Students.textContent = menuItems[0];
+	Faculty.textContent = menuItems[1];
+	WhatsNew.textContent = menuItems[2];
+	TechTrends.textContent = menuItems[3];
+	Music.textContent = menuItems[4];
+	LogOut.textContent = menuItems[5];
+
+	//setup structure of elements
+	cardList.appendChild(Students);
+	cardList.appendChild(Faculty);
+	cardList.appendChild(WhatsNew);
+	cardList.appendChild(TechTrends);
+	cardList.appendChild(Music);
+	cardList.appendChild(LogOut);
+	//add ul to div
+	menu.appendChild(cardList);
+	//button selector
+	const menuButton = document.querySelector('.menu-button');
+	menuButton.addEventListener('click', (event) => {
+		console.log('button clicked');
+		menu.classList.toggle('menu--open');
+	});
+
+	return menu;
+}
+const menu = createMenu(menuItems);
+//adds menu comp to body
+body.appendChild(menu);
 
 /* 
 
